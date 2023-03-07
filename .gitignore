@@ -1,0 +1,15 @@
+# Ignore database files
+db.sqlite3
+
+# Ignore generated static files
+staticfiles/
+
+# Ignore virtual environment
+venv/
+
+# Ignore local settings
+settings_local.py
+
+# Ignore IDE settings
+.vscode/
+.idea/
