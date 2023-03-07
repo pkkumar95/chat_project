@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Messages</h2>
+  <ul>
+    {% for message in object_list %}
+      <li>{{ message.content }}</li>
+    {% empty %}
+      <li>No messages found.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'message-create' %}">Create a new message</a>
+{% endblock %}

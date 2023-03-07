@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ object.name }}</h2>
+  <p>{{ object.description }}</p>
+  <ul>
+    {% for member in object.members.all %}
+      <li>{{ member.username }}</li>
+    {% empty %}
+      <li>No members yet.</li>
+    {% endfor %}
+  </ul>
+  {% if request.user in object.members.all %}
+    <a href="{% url 'room-leave' object.pk %}">Leave room</a>
+  {% else %}
+    <a href="{% url 'room-join' object.pk %}">Join room</a>
+  {% endif %}
+  {% if request.user == object.creator %}
+    <a href="{% url 'room-update' object.pk %}">Update room</a>
+    <a href="{% url 'room-delete' object.pk %}">Delete room</a>
+    <a href="{% url 'room-invite' object.pk %}">Invite members</a>
+  {% endif %}
+{% endblock %}
